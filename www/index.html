@@ -51,19 +51,63 @@
         }
     </script>
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-    <title>Hello World</title>
+     <script>
+        //alert(localStorage.length)
+        function initial() {
+            //localStorage.clear();
+            if (localStorage.length != 0) {
+                var a = localStorage.getItem('cellphone1');
+                var b = localStorage.getItem('cellphone2');
+                var c = localStorage.getItem('cellphone3');
+                //alert(b);
+                var selectlen = document.getElementById("num1").length;
+
+                for (var i = 0; i < selectlen.length; i++) {
+                    if (selectlen.option[i].value == a) {
+                        selectlen.selected = 'selected';
+                    }
+                }
+                document.getElementById("num2").value = b;
+                document.getElementById("num3").value = c;
+                document.getElementById("loginbtn").click();
+            }
+        }
+
+    </script>
+    <style>
+        body
+        {
+            background-image:url('img/logo.jpg');
+            background-size:cover;
+        }
+    </style>
+    <script>
+        function len_chk(){
+            var num2=document.getElementById("num2");
+            if(num2.value.length==4){
+                document.getElementById("num3").focus();
+
+            }
+        }
+        function changefocus(){
+            var num2 = document.getElementById("num2");
+            num2.focus();
+        }
+    </script>
+    <title>유치원 연합회 주소록</title>
 </head>
 
-<body style="align-content: center">
+<body style="align-content: center" onload="initial()">
     <!--<div class="app">-->
         <!--<h1>PhoneGap</h1>-->
         <!--<div id="deviceready" class="blink">-->
             <!--<p class="event listening">Connecting to Device</p>-->
             <!--<p class="event received">Device is Ready</p>-->
-        <!--</div>-->
     <!--</div>-->
+    <!--</div>-->
+
     <header>
-        <h1>유치원 연합회</h1>
+        <h1 align="center">유치원 연합회</h1><br/><br/>
     </header>
     <article>
         <script type="text/javascript" src="cordova.js"></script>
@@ -71,56 +115,68 @@
         <script type="text/javascript">
             app.initialize();
         </script>
-        <h2>핸드폰 번호를 입력해 주세요</h2>
-        <div>
-            <select id="num1">
-                <option value="010" selected>010</option>
-                <option value="011">011</option>
-                <option value="016">016</option>
-                <option value="019">019</option>
-            </select>
-            <d>-</d>
-            <input type="tel" size="3" id="num2">
-            <d>-</d>
-            <input type="tel" size="3" id="num3"> <br/>
-        </div>
-        <div>
-            <button type="button" id="loginbtn">확인</button>
+        <div align="center">
+            <div>
+                <h2>핸드폰 번호를 입력해 주세요</h2>
+            </div>
+            <div>
+                <select  id="num1" name="num1" style="height:33px;border: 3px solid #3c3c3c;" onchange="changefocus()">
+                    <option value="010" selected>010</option>
+                    <option value="011">011</option>
+                    <option value="016">016</option>
+                    <option value="019">019</option>
+                </select>
+                <d>-</d>
+                <input type="tel" size="7" id="num2" name="num2" style="height:25px;border: 3px solid #3c3c3c;" maxlength="4" onkeyup="len_chk()">
+                <d>-</d>
+                <input type="tel" size="7" id="num3" name="num3" style="height:25px;border: 3px solid #3c3c3c;" maxlength="4"> <br/><br/>
+            </div>
+            <div>
+                <button type="button" id="loginbtn">확인</button>
+            </div>
         </div>
         <script>
             $(document).ready(function()
             {
                 $("#loginbtn").click(function ()
                 {
-                    var cellphone = document.getElementById('num1').value+"-"+document.getElementById('num2').value+"-"+document.getElementById('num3').value;
-                    alert(cellphone);
+                    var cellphone1 = document.getElementById('num1').value+"-"+document.getElementById('num2').value+"-"+document.getElementById('num3').value;
                     $.ajax(
                             {
                                 method: 'GET',
-                                url: 'contact.attocube.co.kr/api/checkuser',
-                                data: {'cellphone':cellphone, 'csrfmiddlewaretoken': '{{ csrf_token }}',},
+                                url: 'http://contact.attocube.co.kr/api/checkuser',
+                                data: {'cellphone':cellphone1, 'csrfmiddlewaretoken': '{{ csrf_token }}',},
                                 success: function (data) {
-                                    alert("ajax sucess");
-//                                    var retValue = data.reval;
-//                                    //var dd =JSON.stringify(data)
-//
-//                                    if (retValue == 1) {
-//
-//                                        var q = confirm(inputID + "는 사용할 수 있습니다. 사용하시겠습니까?");
-//                                        if (q == true) {
-//                                            var f = document.form1;
-//                                            f.id.readOnly = true;
-//                                        }
-//                                        else {
-//                                            var f = document.form1;
-//                                            f.id.value = "";
-//                                        }
-//                                    }
-//                                    else {
-//                                        alert("중복된 아이디 입니다");
-//                                        //var f = document.form1;
-//                                        document.form1.id.value = "";
-//                                    }
+                                    alert("1");
+                                    if(data.success==true){
+                                        localStorage.setItem('cellphone1',document.getElementById("num1").value);
+                                        localStorage.setItem('cellphone2',document.getElementById("num2").value);
+                                        localStorage.setItem('cellphone3',document.getElementById("num3").value);
+
+                                        var cellphone = data.current.cellphone;
+                                        var name = data.current.name;
+                                        var company = data.current.company;
+                                        var member = data.current.member;
+                                        var addr = data.current.address;
+                                        var phone = data.current.phone;
+                                        var fax = data.current.fax;
+                                        var email = data.current.email;
+                                        localStorage.setItem('name',name);
+                                        localStorage.setItem('email',email);
+                                        localStorage.setItem('company',company);
+                                        localStorage.setItem('member',member);
+                                        localStorage.setItem('address',addr);
+                                        localStorage.setItem('fax',fax);
+                                        localStorage.setItem('phone',phone);
+
+                                            location.href="list.html";
+
+
+
+                                    }
+                                    else{
+                                        alert("죄송합니다 접근할 수 없습니다.")
+                                    }
                                 },
                                 error: function () {
                                     alert('error');
