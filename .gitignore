@@ -1,0 +1,7 @@
+.idea/
+*.iml
+platforms/
+hooks/
+.DS_Store
+change/
+*.json
