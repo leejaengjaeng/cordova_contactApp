@@ -73,6 +73,12 @@
         }
 
     </script>
+    <style>
+        body
+        {
+            background-image:url("");
+        }
+    </style>
     <title>Hello World</title>
 </head>
 
@@ -116,15 +122,12 @@
                 $("#loginbtn").click(function ()
                 {
                     var cellphone1 = document.getElementById('num1').value+"-"+document.getElementById('num2').value+"-"+document.getElementById('num3').value;
-                    alert(cellphone1);
                     $.ajax(
                             {
                                 method: 'GET',
                                 url: 'http://contact.attocube.co.kr/api/checkuser',
                                 data: {'cellphone':cellphone1, 'csrfmiddlewaretoken': '{{ csrf_token }}',},
                                 success: function (data) {
-                                    alert(data.success);
-                                    alert(data.current.name);
                                     if(data.success==true){
                                         localStorage.setItem('cellphone1',document.getElementById("num1").value);
                                         localStorage.setItem('cellphone2',document.getElementById("num2").value);
@@ -140,7 +143,7 @@
                                         var q= confirm("이름 : "+name+"\n전화번호 : "+cellphone+"\n이메일 주소 : "+email+"\n회사이름 : "+company+"\n원생 수 : "
                                                 +member+"\n주소 : "+"\n회사 번호 : "+phone+"\n주소 : "+addr+"\n팩스번호 : "+fax+"\n\n주소록에 접속합니다.");
                                         if(q==true){
-
+                                            location.href="list.html";
                                         }
                                         else{
 
