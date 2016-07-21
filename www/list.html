@@ -11,9 +11,40 @@
        
         <title>TITLE : 유치원 연합회 주소록</title>
         <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/iscroll.js"></script>
   
         <script type="text/javascript">
             var currentIndex =0;
+            var myScroll;
+            var isAlreadyLoading = 0;
+            
+            var iscroller = new IScroll(
+            '#resultList', 
+              { 
+                hScroll: false, 
+                bounce: false, // do not bounce
+                onScrollMove: function () {
+                  // CHECK if we've 350px gap before reaching end of the page
+                  if ( (this.y < (this.maxScrollY + 350)) && (isAlreadyLoading == 0) ){ 
+                    // start loading next page content here
+
+                    // update this flag inside load more and set to 0 when complete
+                    isAlreadyLoading = 1; 
+                  }
+                },
+                onScrollEnd: function () {
+                  // check if we went down, and then load content
+                  if ( isAlreadyLoading == 0 ) {
+                    // Load more content
+
+                    // update this flag inside load more and set to 0 when complete
+                    isAlreadyLoading = 1; 
+                  } else {
+                    // DO NOTHING
+                  }
+                }
+              } // end of Scoller config object
+            ); // end iScroll instance
             initCall = function()
             { 
                 $.ajax(
@@ -23,6 +54,7 @@
                     data: {'index' : currentIndex, 'csrfmiddlewaretoken': "{{ csrf_token }}"},
                     success: function(directors)
                     {
+                        var t = currentIndex;
                         for(var director in directors)
                         {
                             $('#resultList').append('\
@@ -32,8 +64,9 @@
                                     </div>\
                                     <div class="grids-right">\
                                         <ul class="grids-right-info">\
-                                                                    <h2>이름:'+directors[director].name+'</h2><br>\
-                                                                    <h2>소속:'+directors[director].company+'</h2>\
+                                            <li>이름 : '+directors[director].name+'</li><br>\
+                                            <li>소속 : '+directors[director].company+'</li><br>\
+                                            <li>전화번호 : '+directors[director].phone+'</a></li>\
                                         </ul>\
                                     </div>\
                                     <div class="clear"></div>\
@@ -49,6 +82,8 @@
                     }
                 });
             }
+           
+
         </script>
     </head>
     <body onload="initCall()">            
@@ -89,8 +124,9 @@
                                                             </div>\
                                                             <div class="grids-right">\
                                                                 <ul class="grids-right-info">\
-                                                                    <h2>이름:'+directors[director].name+'</h2><br>\
-                                                                    <h2>소속:'+directors[director].company+'</h2>\
+                                                                    <li>이름 : '+directors[director].name+'</li><br>\
+                                                                    <li>소속 : '+directors[director].company+'</li><br>\
+                                                                   <li>전화번호 :'+directors[director].phone+'</a></li>\
                                                                 </ul>\
                                                             </div>\
                                                             <div class="clear"></div>\
