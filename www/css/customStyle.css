@@ -231,6 +231,7 @@ text-align: center;
 ul.grids-right-info li {
   display: inline-block;
   padding: 0.5em;
+  margin-left:0.5em;
   font-size: 1em;
   color: #999;
 }
@@ -433,7 +434,7 @@ p.flowers {
   width: 65%;
 }
 ul.grids-right-info {
-  padding-top: 16px;
+  padding-top: 1em;
 }
 .grids-right h2 {
     font-size: 1em;
@@ -518,7 +519,7 @@ ul.grids-right-info {
 	ul.grids-right-info li {
 		margin-top: 1em;
 		padding: 0px 37px 0 31px;
-		  font-size: 22px;
+		  font-size: 1em;
 	}    
 	.copy-right {
   padding-top: 17em;
@@ -595,7 +596,7 @@ font-size: 1.3em;
 		 background-size: 20px;
 	}
 	ul.grids-right-info li {
-  font-size: 16px;
+  font-size: 1em;
   padding: 0px 27px;
 	}
 	.copy-right {
