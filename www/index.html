@@ -92,35 +92,35 @@
             {
                 $("#loginbtn").click(function ()
                 {
-                    var telnum = document.getElementById('num1').value+"-"+document.getElementById('num2').value+"-"+document.getElementById('num3').value;
-                    alert(telnum);
+                    var cellphone = document.getElementById('num1').value+"-"+document.getElementById('num2').value+"-"+document.getElementById('num3').value;
+                    alert(cellphone);
                     $.ajax(
                             {
-                                method: 'POST',
-                                url: '/checkid',
-                                data: {'telnum':telnum, 'csrfmiddlewaretoken': '{{ csrf_token }}',},
+                                method: 'GET',
+                                url: 'contact.attocube.co.kr/api/checkuser',
+                                data: {'cellphone':cellphone, 'csrfmiddlewaretoken': '{{ csrf_token }}',},
                                 success: function (data) {
-                                    //alert("ajax sucess");
-                                    var retValue = data.reval;
-                                    //var dd =JSON.stringify(data)
-
-                                    if (retValue == 1) {
-
-                                        var q = confirm(inputID + "는 사용할 수 있습니다. 사용하시겠습니까?");
-                                        if (q == true) {
-                                            var f = document.form1;
-                                            f.id.readOnly = true;
-                                        }
-                                        else {
-                                            var f = document.form1;
-                                            f.id.value = "";
-                                        }
-                                    }
-                                    else {
-                                        alert("중복된 아이디 입니다");
-                                        //var f = document.form1;
-                                        document.form1.id.value = "";
-                                    }
+                                    alert("ajax sucess");
+//                                    var retValue = data.reval;
+//                                    //var dd =JSON.stringify(data)
+//
+//                                    if (retValue == 1) {
+//
+//                                        var q = confirm(inputID + "는 사용할 수 있습니다. 사용하시겠습니까?");
+//                                        if (q == true) {
+//                                            var f = document.form1;
+//                                            f.id.readOnly = true;
+//                                        }
+//                                        else {
+//                                            var f = document.form1;
+//                                            f.id.value = "";
+//                                        }
+//                                    }
+//                                    else {
+//                                        alert("중복된 아이디 입니다");
+//                                        //var f = document.form1;
+//                                        document.form1.id.value = "";
+//                                    }
                                 },
                                 error: function () {
                                     alert('error');
@@ -131,7 +131,7 @@
         </script>
     </article>
     <footer>
-        <p>Copyright attocube</p>
+        <!--<p>Copyright attocube</p>-->
     </footer>
 </body>
 
