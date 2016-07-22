@@ -19,9 +19,11 @@
   
         <script type="text/javascript">
             var currentIndex =0;
+            var moreFlag = true;
 
             function initCall()
             { 
+                console.log(moreFlag);
                 $.ajax(
                 {
                     method:'GET',
@@ -30,8 +32,9 @@
                     success: function(directors)
                     {
                         currentIndex+=20;
-                        MakeList(directors);
+                        moreFlag = MakeList(directors);
                         console.log(currentIndex);
+                        $('#more').toggle(moreFlag);
                     },
                     error: function()
                     {
@@ -55,8 +58,9 @@
                     {
                         $('#resultList').empty();
                         currentIndex =0;
-                        MakeList(directors);
+                        moreFlag = MakeList(directors);
                         console.log(currentIndex);
+                        $('#more').toggle(moreFlag);
                     },
                     error: function()
                     {
@@ -66,6 +70,7 @@
             }
 
             function MakeList(directors){
+                if(directors.length==0) return false;
                 for(var director in directors)
                 {
                     $('#resultList').append('\
@@ -86,8 +91,9 @@
                         </div>\
                     ');
                 }
+                return true;
             }
-
+        
         </script>
     </head>
     <body onload="initCall()">
@@ -98,25 +104,27 @@
                     <img src="https://s3-ap-northeast-1.amazonaws.com/attocube/Images/logo.png" width="126" height="128">
                 </div>
                 <div class="ui-block-b" style="text-align: center;">
-                    <h1>유치원 연합회</h1>
+                    <h1>어린이집 연합회</h1>
                 </div>
             </div>
         </div>
         
-        <div id="start" class="wrapper-demo" >
+        <div>
             <!-- 검색 폼-->
             <div class="search" style="width:100%;">
-                <div class="search-left" style="float:left; width:100%;">
+                <div style="float:left; width:100%;">
 					<input placeholder="이름을 검색해 주세요" data-type="search" name="search" id="search">
                     <span style="top:25%" id="submit"> </span>
                 </div>
-                <div class="search-right" style="float:left; width:100%;">
+                <div style="float:left; width:100%;">
                     <input class="sb-search-submit" type="submit" value="검색" onclick="Search()">
                 </div>
             </div>
-            
                 <!-- 결과 리스트 -->
             <div id="resultList"></div>
+            </div>
+            <div id="more" style="float:left; width:100%;">
+                    <input class="sb-search-submit" type="submit" value="더보기" onclick="initCall()">
             </div>
         </div>    
     </body>
