@@ -57,7 +57,7 @@ function MakeList(directors){
     for(var director in directors)
     {
         $('#resultList').append('\
-            <div class="container-fluid row">\
+            <div class="container-fluid row resultview">\
                 <div class="col-xs-3">\
                     <img src="img/a1.png" class="img-rounded img-responsive" alt="Responsive image">\
                 </div>\
