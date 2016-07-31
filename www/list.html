@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
         <!--<meta charset="UTF-8">-->
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
@@ -10,43 +11,44 @@
         <link rel="stylesheet" type="text/css" href="css/customStyle.css"> -->
         
         <link rel="stylesheet" href="css/bootstrap.min.css" />
-        <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="css/list.css" />
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/list.js"></script>
         <title>TITLE : 유치원 연합회 주소록</title>
-        <!-- <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/iscroll.js"></script> -->
     </head>
     <body onload="initCall()">
-        
-        <div class="container-fluid">
-            <div class="ui-grid-b">
-                <div class="ui-block-a">
-                    <img src="https://s3-ap-northeast-1.amazonaws.com/attocube/Images/logo.png" width="126" height="128">
-                </div>
-                <div class="ui-block-b" style="text-align: center;">
-                    <h1>어린이집 연합회</h1>
-                </div>
+    <!--<body>-->
+        <div class="header container-fluid row">
+            <div class="col-xs-12">
+                <img src="img/logo_small.png">주소록
             </div>
         </div>
         
-        <div>
+        <div class="search-page container-fluid">
             <!-- 검색 폼-->
-            <div class="search" style="width:100%;">
-                <div style="float:left; width:100%;">
-					<input placeholder="이름을 검색해 주세요" data-type="search" name="search" id="search">
-                    <span style="top:25%" id="submit"> </span>
+            <div class="modal-header row">
+                <div class="col-xs-8">
+                    <input placeholder="이름을 검색해 주세요" data-type="search" name="search" id="search">
                 </div>
-                <div style="float:left; width:100%;">
-                    <input class="sb-search-submit" type="submit" value="검색" onclick="Search()">
+                <div class="col-xs-4">
+                    <img src="img/btn_search.png" onclick="Search()">
+                </div>
+            </div>
+            <div class="search-filter modal-header container-fluid row">
+                <div class="search-1 col-xs-3">
+                    검색 필터
+                </div>
+                <div class="col-xs-3">
+                    <img src="img/btn_searcharea.png" class="img-responsive" alt="Responsive image">
                 </div>
             </div>
                 <!-- 결과 리스트 -->
-            <div id="resultList"></div>
+            <div id="resultList">
+
             </div>
-            <div id="more" style="float:left; width:100%;">
-                    <input class="sb-search-submit" type="submit" value="더보기" onclick="initCall()">
+            <div id="more" class="container-fluid" onclick="initCall()">
+                <img src="img/btn_more.png" class="img-responsive" alt="Responsive image">
             </div>
         </div>    
     </body>

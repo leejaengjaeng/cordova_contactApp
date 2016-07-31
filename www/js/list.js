@@ -57,20 +57,20 @@ function MakeList(directors){
     for(var director in directors)
     {
         $('#resultList').append('\
-            <div class="friends-grids" style="width:100%;">\
-                <div class="grids-left" style="float:left; width:20%; text-align:center;">\
-                    <img src="img/a1.png" />\
+            <div class="container-fluid row">\
+                <div class="col-xs-3">\
+                    <img src="img/a1.png" class="img-rounded img-responsive" alt="Responsive image">\
                 </div>\
-                <div role="main" class="grids-right" style="float:left; width:80%"><h4>\
-                    <ul data-role="listview" data-count-theme="b" data-inset="true">\
-                        <li>이름 : '+directors[director].name+' | 핸드폰 : <a href="tel:'+directors[director].cellphone+'">'+directors[director].cellphone+'</a></li>\
-                        <li>소속 : '+directors[director].company+' | 규모 : '+directors[director].member+'명</li>\
-                        <li>전화번호 : <a href="tel:'+directors[director].phone+'">'+directors[director].phone+'</a> | 팩스 : '+directors[director].fax+'</li>\
-                        <li>이메일 : <a href="mailto:'+directors[director].email+'">'+directors[director].email+'</a>\
-                        <li>주소 : '+directors[director].address+'</li>\
-                    </h4></ul>\
+                <div class="col-xs-9">\
+                    <ul class="list-unstyled">\
+                        <li style="font-size: x-large;">\
+                            <b>' + directors[director].name + '</b>\
+                        </li>\
+                        <li style="font-size: large;">\
+                        ' + directors[director].company + '\
+                        </li>\
+                    </ul>\
                 </div>\
-                <div class="clear"></div>\
             </div>\
         ');
     }

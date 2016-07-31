@@ -50,64 +50,53 @@ var app = {
 
 app.initialize();
 
-$(document).ready(function()
-{
-    $("#loginbtn").click(function ()
-    {
-        var cellphone1 = document.getElementById('num1').value+"-"+document.getElementById('num2').value+"-"+document.getElementById('num3').value;
-        $.ajax(
-                {
-                    method: 'GET',
-                    url: 'http://contact.attocube.co.kr/api/checkuser',
-                    data: {'cellphone':cellphone1, 'csrfmiddlewaretoken': '{{ csrf_token }}',},
-                    success: function (data) {
-                        alert("1");
-                        if(data.success==true){
-                            localStorage.setItem('cellphone1',document.getElementById("num1").value);
-                            localStorage.setItem('cellphone2',document.getElementById("num2").value);
-                            localStorage.setItem('cellphone3',document.getElementById("num3").value);
+// $(document).ready(function()
+// {
+//     $("#loginbtn").click(function ()
+//     {
+//         var cellphone1 = document.getElementById('num1').value+"-"+document.getElementById('num2').value+"-"+document.getElementById('num3').value;
+//         $.ajax(
+//                 {
+//                     method: 'GET',
+//                     url: 'http://contact.attocube.co.kr/api/checkuser',
+//                     data: {'cellphone':cellphone1, 'csrfmiddlewaretoken': '{{ csrf_token }}',},
+//                     success: function (data) {
+//                         alert("1");
+//                         if(data.success==true){
+//                             localStorage.setItem('cellphone1',document.getElementById("num1").value);
+//                             localStorage.setItem('cellphone2',document.getElementById("num2").value);
+//                             localStorage.setItem('cellphone3',document.getElementById("num3").value);
+//
+//                             var cellphone = data.current.cellphone;
+//                             var name = data.current.name;
+//                             var company = data.current.company;
+//                             var member = data.current.member;
+//                             var addr = data.current.address;
+//                             var phone = data.current.phone;
+//                             var fax = data.current.fax;
+//                             var email = data.current.email;
+//                             localStorage.setItem('name',name);
+//                             localStorage.setItem('email',email);
+//                             localStorage.setItem('company',company);
+//                             localStorage.setItem('member',member);
+//                             localStorage.setItem('address',addr);
+//                             localStorage.setItem('fax',fax);
+//                             localStorage.setItem('phone',phone);
+//
+//                             location.href="list.html";
+//                         }
+//                         else{
+//                             alert("죄송합니다 접근할 수 없습니다.")
+//                         }
+//                     },
+//                     error: function () {
+//                         alert('error');
+//                     }
+//                 });
+//     });
+// });
 
-                            var cellphone = data.current.cellphone;
-                            var name = data.current.name;
-                            var company = data.current.company;
-                            var member = data.current.member;
-                            var addr = data.current.address;
-                            var phone = data.current.phone;
-                            var fax = data.current.fax;
-                            var email = data.current.email;
-                            localStorage.setItem('name',name);
-                            localStorage.setItem('email',email);
-                            localStorage.setItem('company',company);
-                            localStorage.setItem('member',member);
-                            localStorage.setItem('address',addr);
-                            localStorage.setItem('fax',fax);
-                            localStorage.setItem('phone',phone);
 
-                                location.href="list.html";
-
-
-
-                        }
-                        else{
-                            alert("죄송합니다 접근할 수 없습니다.")
-                        }
-                    },
-                    error: function () {
-                        alert('error');
-                    }
-                });
-    });
-});
-
-function changenumber ( email ) {
-    if(email == "1") {
-        document.getElementById("email3").style.display = "block";
-        document.frm.email3.value = "";
-    } else {
-        document.getElementById("email3").style.display = "none";
-        document.form1.email3.value = email;
-    }
-}
 
 //alert(localStorage.length)
 function initial() {
@@ -126,8 +115,11 @@ function initial() {
         }
         document.getElementById("num2").value = b;
         document.getElementById("num3").value = c;
-        document.getElementById("loginbtn").click();
+        // document.getElementById("loginbtn").click();
     }
+
+    document.getElementById("back").style.visibility = "hidden";
+    document.getElementById("body2").style.visibility = "hidden";
 }
 
 function len_chk(){
@@ -141,4 +133,100 @@ function len_chk(){
 function changefocus(){
     var num2 = document.getElementById("num2");
     num2.focus();
+}
+
+function changenumber ( email ) {
+    if(email == "1") {
+        document.getElementById("email3").style.display = "block";
+        document.frm.email3.value = "";
+    } else {
+        document.getElementById("email3").style.display = "none";
+        document.form1.email3.value = email;
+    }
+}
+
+function ClickSMS(){
+    var cellphone1 = document.getElementById('num1').value+"-"+document.getElementById('num2').value+"-"+document.getElementById('num3').value;
+    // $.ajax({
+    //     method: 'GET',
+    //     url: 'http://contact.attocube.co.kr/api/checkuser',
+    //     data: {'cellphone':cellphone1, 'csrfmiddlewaretoken': '{{ csrf_token }}',},
+    //     success: function (data) {
+    //         if(data.success==true){
+    //             localStorage.setItem('cellphone1',document.getElementById("num1").value);
+    //             localStorage.setItem('cellphone2',document.getElementById("num2").value);
+    //             localStorage.setItem('cellphone3',document.getElementById("num3").value);
+    //
+    //             var cellphone = data.current.cellphone;
+    //             var name = data.current.name;
+    //             var company = data.current.company;
+    //             var member = data.current.member;
+    //             var addr = data.current.address;
+    //             var phone = data.current.phone;
+    //             var fax = data.current.fax;
+    //             var email = data.current.email;
+    //             localStorage.setItem('name',name);
+    //             localStorage.setItem('email',email);
+    //             localStorage.setItem('company',company);
+    //             localStorage.setItem('member',member);
+    //             localStorage.setItem('address',addr);
+    //             localStorage.setItem('fax',fax);
+    //             localStorage.setItem('phone',phone);
+    //
+    //             // location.href="list.html";
+    //         }
+    //         else{
+    //             alert("죄송합니다 접근할 수 없습니다.")
+    //         }
+    //     },
+    //     error: function () {
+    //         alert('error');
+    //     }
+    // });
+    document.getElementById("phonenumber").innerHTML = cellphone1;
+    document.getElementById("back").style.visibility = "visible";
+    document.getElementById("body1").style.visibility = "hidden";
+    document.getElementById("body2").style.visibility = "visible";
+}
+
+function ClickLogin(){
+
+    var cellphone1 = document.getElementById('num1').value+"-"+document.getElementById('num2').value+"-"+document.getElementById('num3').value;
+    alert(cellphone1);
+    $.ajax({
+        method: 'GET',
+        url: 'http://contact.attocube.co.kr/api/checkuser',
+        data: {'cellphone':cellphone1, 'csrfmiddlewaretoken': '{{ csrf_token }}',},
+        success: function (data) {
+            if(data.success==true){
+                localStorage.setItem('cellphone1',document.getElementById("num1").value);
+                localStorage.setItem('cellphone2',document.getElementById("num2").value);
+                localStorage.setItem('cellphone3',document.getElementById("num3").value);
+
+                var cellphone = data.current.cellphone;
+                var name = data.current.name;
+                var company = data.current.company;
+                var member = data.current.member;
+                var addr = data.current.address;
+                var phone = data.current.phone;
+                var fax = data.current.fax;
+                var email = data.current.email;
+                localStorage.setItem('name',name);
+                localStorage.setItem('email',email);
+                localStorage.setItem('company',company);
+                localStorage.setItem('member',member);
+                localStorage.setItem('address',addr);
+                localStorage.setItem('fax',fax);
+                localStorage.setItem('phone',phone);
+
+                location.href="list.html";
+            }
+            else{
+                alert("죄송합니다 접근할 수 없습니다.")
+            }
+        },
+        error: function () {
+            alert('error');
+        }
+    });
 }
