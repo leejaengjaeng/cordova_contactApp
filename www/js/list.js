@@ -52,13 +52,14 @@ function Search(){
     });
 }
 
-function SearchLocation(){
+function SearchLocation(doname,siname){
+
     $.ajax({
         method:'GET',
         url:'http://contact.attocube.co.kr/api/searchlocation',
         data: {
-            'do' : document.getElementById('do').value,
-            'si' : document.getElementById('si').value,
+            'do' : doname,
+            'si' : siname,
             'csrfmiddlewaretoken': "{{ csrf_token }}" },
         success: function(directors)
         {
@@ -98,4 +99,27 @@ function MakeList(directors){
         ');
     }
     return true;
+}
+
+function changeview(localname){
+    if(localname=="경기"){
+        document.getElementById("ggddiv").style.display="block";
+        document.getElementById("ggdbtn").style.backgroundColor="blue";
+    }
+    else if(localname=="인천"){
+
+    }
+}
+
+function calllocalsearch() {
+    document.getElementById("localsearchdiv").style.display="block";
+    document.getElementById("defaultdiv").style.display="none";
+}
+function selectlocal(localname){
+    
+        var doname="경기";
+        var siname=localname;
+    SearchLocation(doname,siname);
+    document.getElementById("localsearchdiv").style.display="none";
+    document.getElementById("defaultdiv").style.display="block";
 }
