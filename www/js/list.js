@@ -52,6 +52,29 @@ function Search(){
     });
 }
 
+function SearchLocation(){
+    $.ajax({
+        method:'GET',
+        url:'http://contact.attocube.co.kr/api/searchlocation',
+        data: {
+            'do' : document.getElementById('do').value,
+            'si' : document.getElementById('si').value,
+            'csrfmiddlewaretoken': "{{ csrf_token }}" },
+        success: function(directors)
+        {
+            $('#resultList').empty();
+            currentIndex =0;
+            moreFlag = MakeList(directors);
+            console.log(currentIndex);
+            $('#more').toggle(moreFlag);
+        },
+        error: function()
+        {
+            alert('list get error');
+        }
+    });
+}
+
 function MakeList(directors){
     if(directors.length==0) return false;
     for(var director in directors)
