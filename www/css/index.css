@@ -4,8 +4,7 @@
 
 .index-title{
     color: #ffffff;
-    margin-right: 10%;
-    font-size:xx-large;
+    font-size: 4vw;
 }
 
 .body-header{
@@ -14,16 +13,16 @@
 }
 
 .default-text{
-    font-size: x-large;
     color: #444444;
+    font-size: 3vw;
 }
 
 #num1,#num2,#num3 {
-    width: 90%;
+    font-size: 3vw;
+    width:100%;
     height:50px;
     border: 3px solid #FFFFFF;
     text-align: center;
-    font-size: 30px;
 }
 
 .button-sms{
@@ -32,13 +31,14 @@
 }
 
 .button-sms p{
-    font-size: xx-large;
+    font-size: 4vw;
     margin: 0 auto;
     color:#1db68b;
 }
 
 #phonenumber {
-   font-size: xx-large; color: #ff7787;
+    color: #ff7787;
+    font-size: 4.5vw;
 }
 
 #correct{
@@ -47,25 +47,25 @@
     border: 3px solid #FFFFFF;
     border-radius:4px;
     text-align: center;
-    font-size: 30px;
+    font-size: 4vw;
 }
 
 .login-button{
     border: 2px solid #5f96e2;
     border-radius: 4px;
-    font-size:xx-large;
     color:#FFFFFF;
     background-color: #5f96e2;
     margin-top: 5% !important;
     margin: 0 auto;
+    font-size: 4vw;
 }
 
 .retry{
    border: 2px solid #5f96e2;
     border-radius: 4px;
-    font-size:xx-large;
     color:#FFFFFF;
     background-color: #5f96e2;
     margin-top: 5% !important;
     margin: 0 auto;
+    font-size: 4vw;
 }
