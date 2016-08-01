@@ -20,7 +20,6 @@
     under the License.
 -->
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta name="format-detection" content="telephone=no" />
@@ -38,103 +37,61 @@
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <script>
-        function changenumber ( email ) {
-            if(email == "1") {
-                document.getElementById("email3").style.display = "block";
-                document.frm.email3.value = "";
-            } else {
-                document.getElementById("email3").style.display = "none";
-                document.form1.email3.value = email;
-            }
-        }
-    </script>
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-     <script>
-        //alert(localStorage.length)
-        function initial() {
-            //localStorage.clear();
-            if (localStorage.length != 0) {
-                var a = localStorage.getItem('cellphone1');
-                var b = localStorage.getItem('cellphone2');
-                var c = localStorage.getItem('cellphone3');
-                //alert(b);
-                var selectlen = document.getElementById("num1").length;
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-                for (var i = 0; i < selectlen.length; i++) {
-                    if (selectlen.option[i].value == a) {
-                        selectlen.selected = 'selected';
-                    }
-                }
-                document.getElementById("num2").value = b;
-                document.getElementById("num3").value = c;
-                document.getElementById("loginbtn").click();
-            }
-        }
-
-    </script>
-    <style>
-        body
-        {
-            background-image:url('img/logo.jpg');
-            background-size:cover;
-        }
-    </style>
-    <script>
-        function len_chk(){
-            var num2=document.getElementById("num2");
-            if(num2.value.length==4){
-                document.getElementById("num3").focus();
-
-            }
-        }
-        function changefocus(){
-            var num2 = document.getElementById("num2");
-            num2.focus();
-        }
-    </script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
     <title>유치원 연합회 주소록</title>
 </head>
 
-<body style="align-content: center" onload="initial()">
-    <!--<div class="app">-->
-        <!--<h1>PhoneGap</h1>-->
-        <!--<div id="deviceready" class="blink">-->
-            <!--<p class="event listening">Connecting to Device</p>-->
-            <!--<p class="event received">Device is Ready</p>-->
-    <!--</div>-->
-    <!--</div>-->
-
-    <header>
-        <h1 align="center">유치원 연합회</h1><br/><br/>
-    </header>
-    <article>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-        <div align="center">
-            <div>
-                <h2>핸드폰 번호를 입력해 주세요</h2>
+<body onload="initial()">
+<!--<body>-->
+    <div class="container-fluid">
+        <div class="header modal-header row">
+            <div class="col-xs-1 back">
+                <button class="btn-default" id="back">Back</button>
             </div>
-            <div>
-                <select  id="num1" name="num1" style="height:33px;border: 3px solid #3c3c3c;" onchange="changefocus()">
-                    <option value="010" selected>010</option>
-                    <option value="011">011</option>
-                    <option value="016">016</option>
-                    <option value="019">019</option>
-                </select>
-                <d>-</d>
-                <input type="tel" size="7" id="num2" name="num2" style="height:25px;border: 3px solid #3c3c3c;" maxlength="4" onkeyup="len_chk()">
-                <d>-</d>
-                <input type="tel" size="7" id="num3" name="num3" style="height:25px;border: 3px solid #3c3c3c;" maxlength="4"> <br/><br/>
-            </div>
-            <div>
-                <button type="button" id="loginbtn" style="width:100px;height:50px">확인</button>
+            <div class="col-xs-11">
+                <p class="index-title text-center">로그인</p>
             </div>
         </div>
+    </div>
+    <div class="container-fluid">
+        <div id="body1">
+            <div class="body-header container-fluid modal-header">
+                <p class="default-text text-center">어린이집 연합회 원장님 인증단계 입니다.</p>
+                <p class="default-text text-center">핸드폰 번호를 입력해주세요.</p>
+            </div>
+<<<<<<< HEAD
+            <div>
+                <button type="button" id="loginbtn" style="width:100px;height:50px">확인</button>
+=======
+            <div class="container row" style="margin:0 auto;">
+                <div class="col-xs-4" style="text-align: right">
+                    <select  id="num1" name="num1" style="" onchange="changefocus()">
+                        <option value="010" selected>010</option>
+                        <option value="011">011</option>
+                        <option value="016">016</option>
+                        <option value="019">019</option>
+                    </select>
+                </div>
+                <div class="col-xs-4">
+                    <input type="tel" size="7" id="num2" name="num2" maxlength="4" onkeyup="len_chk()">
+                </div>
+                <div class="col-xs-4" style="text-align: left">
+                    <input type="tel" size="7" id="num3" name="num3" maxlength="4"> <br/><br/>
+                </div>
+>>>>>>> 20093b5c3fd11c328f481be192b9163a7267c314
+            </div>
+            <button type="button" class="button-sms btn-block" onclick="ClickSMS()" id="loginbtn">
+                <p class="text-center">인증번호 보내기</p>
+            </button>
+        </div>
+<<<<<<< HEAD
         <script>
             $(document).ready(function()
             {
@@ -170,24 +127,29 @@
 
                                             location.href="list.html";
 
+=======
+>>>>>>> 20093b5c3fd11c328f481be192b9163a7267c314
 
+        <div id="body2" style="visibility: hidden;">
+            <div class="body-header container-fluid modal-header">
+                <p class="text-center" id="phonenumber"></p>
+                <p class="default-text text-center">SMS로 인증번호가 전송되었습니다.</p>
+            </div>
 
-                                    }
-                                    else{
-                                        alert("죄송합니다 접근할 수 없습니다.")
-                                    }
-                                },
-                                error: function () {
-                                    alert('error');
-                                }
-                            });
-                });
-            });
-        </script>
-    </article>
-    <footer>
-        <!--<p>Copyright attocube</p>-->
-    </footer>
+            <div class="container" style="text-align:center;">
+                <input type="text" id="correct" style="" maxlength="6" placeholder="인증번호를 입력해 주세요.">
+                <button type="button" class="login-button btn-block" onclick="ClickLogin()">확인</button>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p class="default-text text-center">인증번호를 못 받았나요?</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <button type="button" class="retry btn-block">다시 받기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
