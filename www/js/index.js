@@ -185,7 +185,7 @@ function ClickSMS(){
     // });
     document.getElementById("phonenumber").innerHTML = cellphone1;
     document.getElementById("back").style.visibility = "visible";
-    document.getElementById("body1").style.visibility = "hidden";
+    document.getElementById("body1").style.display = "none";
     document.getElementById("body2").style.visibility = "visible";
 }
 
