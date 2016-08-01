@@ -96,7 +96,8 @@
             </div>
         </div>
     </div>
-    <div id="body2" style="visibility: hidden">
+    <!--<div id="body2" style="visibility: hidden">-->
+    <div id="body2">
         <div class="body-header container-fluid modal-header">
             <p class="text-center" id="phonenumber"></p>
             <p class="default-text text-center">SMS로 인증번호가 전송되었습니다.</p>
@@ -104,7 +105,7 @@
 
         <div class="container" style="text-align:center;">
             <input type="text" id="correct" style="" maxlength="6" placeholder="인증번호를 입력해 주세요.">
-            <button type="button" style="height:40px"class="login-button btn-block" onclick="ClickLogin()">확인</button>
+            <button type="button" style="height:40px"class="login-button btn-block" onclick="ClickLogin()" id="loginbtn2">확인</button>
             <div class="row">
                 <div style="padding-top:10px"class="col-xs-6">
                     <p class="default-text text-center">인증번호를 못 받았나요?</p>
