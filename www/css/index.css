@@ -1,5 +1,6 @@
 .header {
     background-color: #1db68b;
+    height:70px;
 }
 
 .index-title{
@@ -9,7 +10,8 @@
 
 .body-header{
     background-color: #FFFFFF;
-    margin: 15px !important;
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
 }
 
 .default-text{
@@ -61,10 +63,10 @@
 }
 
 .retry{
-   border: 2px solid #5f96e2;
+   border: 2px solid palevioletred;
     border-radius: 4px;
     color:#FFFFFF;
-    background-color: #5f96e2;
+    background-color: palevioletred;
     margin-top: 5% !important;
     margin: 0 auto;
     font-size: 4vw;

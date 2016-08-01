@@ -186,7 +186,7 @@ function ClickSMS(){
     document.getElementById("phonenumber").innerHTML = cellphone1;
     document.getElementById("back").style.visibility = "visible";
     document.getElementById("body1").style.display = "none";
-    document.getElementById("body2").style.visibility = "visible";
+    document.getElementById("body2").style.visibility="visible";
 }
 
 function ClickLogin(){
@@ -229,4 +229,9 @@ function ClickLogin(){
             alert('error');
         }
     });
+}
+
+function ClickBack(){
+    document.getElementById("body1").style.display="block";
+    document.getElementById("body2").style.visibility="hidden";
 }
