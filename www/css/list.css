@@ -19,7 +19,7 @@ body {
 }
 
 .header{
-    padding: 5%;
+    padding: 0%;
     background-color: #1db68b;
     text-align: center;
     color:#FFFFFF;
@@ -27,9 +27,9 @@ body {
 }
 
 #search {
-    font-size: large;
+    font-size:medium;
     width: 100%;
-    height : 90px;
+    height : 30px;
     background-color: lightgray;
     border: 2px solid lightgray;
     border-radius: 2px;
@@ -46,4 +46,20 @@ body {
 
 .resultview{
     margin: 2%;
+}
+
+.maintext{
+
+    font-size: 10vw;
+}
+.logoimg{
+    width:30px;
+    position: relative;
+    top:12px;
+}
+.searchinput{
+    height:10px;
+}
+.searchimg{
+    height:30px;
 }

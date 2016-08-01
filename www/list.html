@@ -21,18 +21,22 @@
     <!--<body>-->
         <div class="header container-fluid row">
             <div class="col-xs-12">
-                <img src="img/logo_small.png">주소록
+
+                    <img src="img/logo_small.png" class="logoimg">
+
+                    <b class="maintext">주소록</b>
+
             </div>
+
         </div>
-        
         <div class="search-page container-fluid">
             <!-- 검색 폼-->
             <div class="modal-header row">
-                <div class="col-xs-8">
-                    <input placeholder="이름을 검색해 주세요" data-type="search" name="search" id="search">
+                <div class="col-xs-9">
+                    <label><input class="searchinput" placeholder="이름을 검색해 주세요" data-type="search" name="search" id="search"></label>
                 </div>
-                <div class="col-xs-4">
-                    <img src="img/btn_search.png" onclick="Search()">
+                <div class="col-xs-3">
+                    <img class = "searchimg"src="img/btn_search.png" onclick="Search()">
                 </div>
             </div>
             <div class="search-filter modal-header container-fluid row">
