@@ -19,12 +19,17 @@
 </head>
 <body onload="initCall()">
 <!--<body>-->
-<div class="header container-fluid row">
-    <div class="col-xs-12">
+<div style="position: absolute; top:20px; left:10px; z-index:1">
+<img src="img/btn_back.png" id="back" style="padding-left:0px;height:30px; display: none;" onclick="ClickBack2()">
+</div>
+<div style="height:100px" class="header container-fluid row">
+
+    <div  class="col-xs-12">
+
 
         <img src="img/logo_small.png" class="logoimg">
 
-        <b class="maintext">주소록</b>
+        <b id="mainname" class="maintext">주소록</b>
 
     </div>
 
@@ -75,24 +80,57 @@
                 <tr >
                     <td id ="ggdbtn" class="text-center" onclick="changeview('경기')" >경기</td>
                 </tr>
-                <tr >
+                <tr class="disabled_color">
                     <td class="text-center">인천</td>
                 </tr>
                 <tr class="disabled_color">
-                    <td class="text-center">도1</td>
+                    <td class="text-center">부산</td>
                 </tr>
                 <tr class="disabled_color">
-                    <td class="text-center">도2</td>
+                    <td class="text-center">세종</td>
                 </tr>
                 <tr class="disabled_color">
-                    <td class="text-center">도3</td>
+                    <td class="text-center">대전</td>
+                </tr>
+                <tr class="disabled_color">
+                    <td class="text-center">광주</td>
+                </tr>
+                <tr class="disabled_color">
+                    <td class="text-center">대구</td>
+                </tr>
+                <tr class="disabled_color">
+                    <td class="text-center">울산</td>
+                </tr>
+                <tr class="disabled_color">
+                    <td class="text-center">깅원도</td>
+                </tr>
+                <tr class="disabled_color">
+                    <td class="text-center">충청북도</td>
+                </tr>
+                <tr class="disabled_color">
+                    <td class="text-center">충청남도</td>
+                </tr>
+                <tr class="disabled_color">
+                    <td class="text-center">경상북도</td>
+                </tr>
+                <tr class="disabled_color">
+                    <td class="text-center">경상남도</td>
+                </tr>
+                <tr class="disabled_color">
+                    <td class="text-center">전라북도</td>
+                </tr>
+                <tr class="disabled_color">
+                    <td class="text-center">전라남도</td>
+                </tr>
+                <tr class="disabled_color">
+                    <td class="text-center">제주</td>
                 </tr>
             </table>
         </div>
         <!--오른쪽-->
-        <div id = "ggddiv" class="disnone nopadding col-xs-6 border_left" >
+        <div id = "ggddiv" class="disnone nopadding col-xs-6 border_left" style="overflow:auto;" >
             <table class="table">
-                <tr height="70">
+                <tr>
                     <td class="vertical_center text-center" onclick="selectlocal('가평')">가평</td>
                 </tr>
                 <tr>

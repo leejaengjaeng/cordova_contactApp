@@ -104,7 +104,7 @@ function MakeList(directors){
 function changeview(localname){
     if(localname=="경기"){
         document.getElementById("ggddiv").style.display="block";
-        document.getElementById("ggdbtn").style.backgroundColor="blue";
+        document.getElementById("ggdbtn").style.backgroundColor="#00D8FF";
     }
     else if(localname=="인천"){
 
@@ -114,6 +114,8 @@ function changeview(localname){
 function calllocalsearch() {
     document.getElementById("localsearchdiv").style.display="block";
     document.getElementById("defaultdiv").style.display="none";
+    document.getElementById("mainname").innerHTML="<b class=\"maintext\">지역검색</b>"
+    document.getElementById("back").style.display="block";
 }
 function selectlocal(localname){
     
@@ -122,4 +124,14 @@ function selectlocal(localname){
     SearchLocation(doname,siname);
     document.getElementById("localsearchdiv").style.display="none";
     document.getElementById("defaultdiv").style.display="block";
+    document.getElementById("mainname").innerHTML="<b class=\"maintext\">지역검색-"+siname+"</b>"
+}
+function ClickBack2(){
+    currentIndex =0;
+    moreFlag = true;
+    document.getElementById("localsearchdiv").style.display="none";
+    document.getElementById("defaultdiv").style.display="block";
+    document.getElementById("mainname").innerHTML="<b class=\"maintext\">주소록</b>"
+    document.getElementById("back").style.display="none";
+    initCall();
 }
