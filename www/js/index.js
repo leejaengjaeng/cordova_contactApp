@@ -101,7 +101,8 @@ var smsnum;
 var cellphone;
 //alert(localStorage.length)
 function initial() {
-    //localStorage.clear();
+    localStorage.clear();
+
     if (localStorage.length != 0) {
         var cellphone = localStorage.getItem('cellphone');
         var correct = localStorage.getItem('correct');
@@ -149,6 +150,8 @@ function changenumber ( email ) {
 }
 
 function ClickSMS(){
+    document.getElementById("body1").style.display="none";
+    document.getElementById("body2").style.display="block";
     var cellphone1 = document.getElementById('num1').value+"-"+document.getElementById('num2').value+"-"+document.getElementById('num3').value;
     $.ajax({
         method: 'GET',
@@ -206,7 +209,7 @@ function ClickSMS(){
 }
 function retrysms(){
     var cellphone1 = document.getElementById('num1').value+"-"+document.getElementById('num2').value+"-"+document.getElementById('num3').value;
-    alert(cellphone1);
+
     $.ajax({
         method:'GET',
         url:'http://contact.attocube.co.kr/api/retrysms',
@@ -263,6 +266,6 @@ function ClickLogin(){
 }
 
 function ClickBack(){
-    // document.getElementById("body1").style.display="block";
-    // document.getElementById("body2").style.visibility="hidden";
+    document.getElementById("body1").style.display="block";
+    document.getElementById("body2").style.display="none";
 }

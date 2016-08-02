@@ -67,3 +67,28 @@ body {
 .searchimg{
     height:30px;
 }
+
+.seltext{
+    font-size: 5vw;
+    text-align: center;
+}
+.disabled_color{
+
+    background-color: #cbcbcb;
+
+}
+.nopadding{
+    padding:0px;
+}
+.disnone{
+    display: none;
+}
+.border_left{
+    border-left:1px solid #cbcbcb;
+}
+.text-center{
+
+}
+.vertical_center{
+    vertical-align: middle;
+}

@@ -52,13 +52,14 @@ function Search(){
     });
 }
 
-function SearchLocation(){
+function SearchLocation(doname,siname){
+
     $.ajax({
         method:'GET',
         url:'http://contact.attocube.co.kr/api/searchlocation',
         data: {
-            'do' : document.getElementById('do').value,
-            'si' : document.getElementById('si').value,
+            'do' : doname,
+            'si' : siname,
             'csrfmiddlewaretoken': "{{ csrf_token }}" },
         success: function(directors)
         {
@@ -115,13 +116,14 @@ function MakeList(directors){
     return true;
 }
 
+
 function showDetail(selectedBtn)
 {
     $('#listView').hide();
     $('#detailView').show();
-    $('#detailPage').empty();
+    $('.detailPage').empty();
     
-    $('#detailPage').append('\
+    $('.detailPages').append('\
         <img class="img-rounded img-responsive" src="'+selectedBtn.parent('div').parent('div').children('.userimgDiv').children('img').attr('src')+'">\
         <h1>'+selectedBtn.closest('div').children('input[name="member"]').attr('value')+'</h1>\
         <h1>'+selectedBtn.closest('div').children('input[name="cellphone"]').attr('value')+'</h1>\
@@ -142,4 +144,39 @@ function backToList()
 {
     $('#detailView').hide();
     $('#listView').show();
+}
+
+function changeview(localname){
+    if(localname=="경기"){
+        document.getElementById("ggddiv").style.display="block";
+        document.getElementById("ggdbtn").style.backgroundColor="#00D8FF";
+    }
+    else if(localname=="인천"){
+
+    }
+}
+
+function calllocalsearch() {
+    document.getElementById("localsearchdiv").style.display="block";
+    document.getElementById("defaultdiv").style.display="none";
+    document.getElementById("mainname").innerHTML="<b class=\"maintext\">지역검색</b>"
+    document.getElementById("back").style.display="block";
+}
+function selectlocal(localname){
+    
+        var doname="경기";
+        var siname=localname;
+    SearchLocation(doname,siname);
+    document.getElementById("localsearchdiv").style.display="none";
+    document.getElementById("defaultdiv").style.display="block";
+    document.getElementById("mainname").innerHTML="<b class=\"maintext\">지역검색-"+siname+"</b>"
+}
+function ClickBack2(){
+    currentIndex =0;
+    moreFlag = true;
+    document.getElementById("localsearchdiv").style.display="none";
+    document.getElementById("defaultdiv").style.display="block";
+    document.getElementById("mainname").innerHTML="<b class=\"maintext\">주소록</b>"
+    document.getElementById("back").style.display="none";
+    initCall();
 }
