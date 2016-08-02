@@ -98,16 +98,16 @@ app.initialize();
 
 
 var smsnum;
-var cellphone;
+var cellp;
 //alert(localStorage.length)
 function initial() {
-    
 
+    // localStorage.clear();
     if (localStorage.length != 0) {
         var cellphone = localStorage.getItem('cellphone');
         var correct = localStorage.getItem('correct');
         smsnum=correct;
-        cellphone=cellphone;
+        cellp=cellphone;
         document.getElementById("correct").value = correct;
         // //alert(b);
         // var selectlen = document.getElementById("num1").length;
@@ -156,23 +156,17 @@ function ClickSMS(){
     $.ajax({
         method: 'GET',
         url: 'http://contact.attocube.co.kr/api/checksms',
-        data: {'cellphone':cellphone1, 'test':1, 'csrfmiddlewaretoken': '{{ csrf_token }}',},
+        //test에 테스트 할떄는 1보내고 리턴은 data.sms로 받는다 그리고 실제ㅔ sms 받으려면 test에 0 보낸다
+        data: {'cellphone':cellphone1, 'test':0, 'csrfmiddlewaretoken': '{{ csrf_token }}',},
         success: function (data) {
+                // alert(data.sms);
 
-            if(data.sms>99999&&data.sms<1000000){
-                alert(data.sms);
-                localStorage.setItem("cellphone",cellphone1);
-                localStorage.setItem("correct",data.sms);
-                smsnum=data.sms;
-                cellphone=cellphone1;
+                cellp=cellphone1;
                 document.getElementById("phonenumber").innerHTML = cellphone1;
                 document.getElementById("back").style.visibility = "visible";
                 document.getElementById("body1").style.display = "none";
                 document.getElementById("body2").style.visibility="visible";
-            }
-            else{
-                alert("인증되지 않은 번호입니다.");
-            }
+
             // alert(data.sms);
             // if(data.success==true){
             //     alert("success");
@@ -226,8 +220,8 @@ function retrysms(){
 function ClickLogin(){
 
     // var cellphone1 = document.getElementById('num1').value+"-"+document.getElementById('num2').value+"-"+document.getElementById('num3').value;
-    var cellp=localStorage.getItem("cellphone");
-    
+
+    var smsnum=document.getElementById("correct").value;
     $.ajax({
         method: 'GET',
         url: 'http://contact.attocube.co.kr/api/checkuser',
@@ -236,7 +230,8 @@ function ClickLogin(){
             if(data.success==true){
 
                 alert("인증되었습니다.");
-
+                localStorage.setItem("cellphone",cellp);
+                localStorage.setItem("correct",smsnum);
                 // var cellphone = data.current.cellphone;
                 // var name = data.current.name;
                 // var company = data.current.company;

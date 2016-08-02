@@ -23,7 +23,7 @@ body {
     background-color: #1db68b;
     text-align: center;
     color:#FFFFFF;
-    font-size: 60pt;
+    font-size: 40pt;
 }
 
 #search {
@@ -41,7 +41,7 @@ body {
 }
 
 #resultList{
-    margin : 2%;
+    margin : 0%;
 }
 
 .resultview{
@@ -55,7 +55,7 @@ body {
 .logoimg{
     width:30px;
     position: relative;
-    top:12px;
+    top:5px;
 }
 .backimg{
     width:30px;
@@ -65,7 +65,7 @@ body {
     width:30px;
     position: absolute;
     left:15px;
-    top:50px;
+    top:30px;
     display: none;
 }
 .searchinput{
@@ -102,4 +102,12 @@ body {
 .imgsize{
     width:30px;
 
+}
+.veralign{
+    position: relative;
+    top:15px;
+}
+.veralign2{
+    position: relative;
+    top:5px;
 }

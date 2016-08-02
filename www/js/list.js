@@ -5,6 +5,7 @@ var currentIndex =0;
 var moreFlag = true;
 function initCall()
 {
+    
     console.log(moreFlag);
     $.ajax(
     {
@@ -81,11 +82,11 @@ function MakeList(directors){
     for(var director in directors)
     {
         $('#resultList').append('\
-            <div class="container-fluid row resultview">\
-                <div class="col-xs-3 userimgDiv">\
+            <div style="padding-left: 0px"  class="container-fluid row resultview">\
+                <div style="padding-left: 0px" class="col-xs-3 userimgDiv">\
                     <img src="img/a1.png" class="img-rounded img-responsive userImg" alt="Responsive image">\
                 </div>\
-                <div class="col-xs-6">\
+                <div class="col-xs-7">\
                     <ul class="list-unstyled">\
                         <li style="font-size: x-large;">\
                             <b>' + directors[director].name + '</b>\
@@ -95,7 +96,7 @@ function MakeList(directors){
                         </li>\
                     </ul>\
                 </div>\
-                <div class="col-xs-3">\
+                <div style="padding-right: 0px;position: relative;top:10px" class="col-xs-2">\
                     <button class="btn btn-default" onclick="showDetail($(this))">\
                             보기\
                     </button>\
@@ -127,45 +128,45 @@ function showDetail(selectedBtn)
         <table class="table">\
             <tr>\
                 <td colspan="2" rowspan="2" ><img class="img-rounded img-responsive" src="'+selectedBtn.parent('div').parent('div').children('.userimgDiv').children('img').attr('src')+'"></td>\
-                <td colspan="2"><font size="3">'+selectedBtn.closest('div').children('input[name="name"]').attr('value')+'</font></td>\
+                <td colspan="2"><font size="3" class="veralign">'+selectedBtn.closest('div').children('input[name="name"]').attr('value')+'</font></td>\
             </tr>\
             <tr>\
-                <td><font size="3">'+selectedBtn.closest('div').children('input[name="company"]').attr('value')+'</font></td>\
+                <td><font size="3" class="veralign">'+selectedBtn.closest('div').children('input[name="company"]').attr('value')+'</font></td>\
             </tr>\
             <tr>\
                 <td><a href="tel:'+selectedBtn.closest('div').children('input[name="cellphone"]').attr('value')+'"><img src="img/icon_info1_mobile.png" class="imgsize img-responsive"></a></td>\
-                <td><font size="3">핸드폰</font></td>\
-               <td><font size="3">'+selectedBtn.closest('div').children('input[name="cellphone"]').attr('value')+'</font></td>\
+                <td><a href="tel:'+selectedBtn.closest('div').children('input[name="cellphone"]').attr('value')+'"><font size="3" class="veralign2">핸드폰</font></a></td>\
+               <td><a href="tel:'+selectedBtn.closest('div').children('input[name="cellphone"]').attr('value')+'"><font size="3" class="veralign2">'+selectedBtn.closest('div').children('input[name="cellphone"]').attr('value')+'</font></a></td>\
             </tr>\
             <tr>\
                 <td><a href="mailto:'+selectedBtn.closest('div').children('input[name="email"]').attr('value')+'"><img src="img/icon_info2_email.png" class="imgsize img-responsive"></a></td>\
-                <td><font size="3">이메일</font></td>\
-                <td><font size="3">'+selectedBtn.closest('div').children('input[name="email"]').attr('value')+'</font></td>\
+                <td><a href="mailto:'+selectedBtn.closest('div').children('input[name="email"]').attr('value')+'"><font size="3" class="veralign2">이메일</font></a></td>\
+                <td><a href="mailto:'+selectedBtn.closest('div').children('input[name="email"]').attr('value')+'"><font size="3" class="veralign2">'+selectedBtn.closest('div').children('input[name="email"]').attr('value')+'</font></a></td>\
             </tr>\
             <tr>\
                 <td><img src="img/icon_info3_workin.png" class="imgsize img-responsive"></td>\
-                <td><font size="3">소속</font></td>\
-                <td><font size="3">'+selectedBtn.closest('div').children('input[name="company"]').attr('value')+'</font></td>\
+                <td><font size="3" class="veralign2">소속</font></td>\
+                <td><font size="3" class="veralign2">'+selectedBtn.closest('div').children('input[name="company"]').attr('value')+'</font></td>\
             </tr>\
             <tr>\
                 <td><a href="tel:'+selectedBtn.closest('div').children('input[name="phone"]').attr('value')+'"><img src="img/icon_info4_tel.png" class="imgsize img-responsive"></a></td>\
-                <td><font size="3">전화번호</font></td>\
-                <td colsapn="2"><font size="3">'+selectedBtn.closest('div').children('input[name="phone"]').attr('value')+'</font></td>\
+                <td><a href="tel:'+selectedBtn.closest('div').children('input[name="phone"]').attr('value')+'"><font size="3" class="veralign2">전화번호</font></a></td>\
+                <td colsapn="2" class="veralign2"><a href="tel:'+selectedBtn.closest('div').children('input[name="phone"]').attr('value')+'"><font size="3">'+selectedBtn.closest('div').children('input[name="phone"]').attr('value')+'</font></a></td>\
             </tr>\
             <tr>\
                 <td><img src="img/icon_info5_fax.png" class="imgsize img-responsive"></td>\
-                <td><font size="3">팩스</font></td>\
-                <td colsapn="2"><font size="3">'+selectedBtn.closest('div').children('input[name="fax"]').attr('value')+'</font></td>\
+                <td><font size="3" class="veralign2">팩스</font></td>\
+                <td colsapn="2" class="veralign2"><font size="3">'+selectedBtn.closest('div').children('input[name="fax"]').attr('value')+'</font></td>\
             </tr>\
             <tr>\
                 <td><img src="img/icon_info6_num.png" class="imgsize img-responsive"></td>\
-                <td><font size="3">규모</font></td>\
-                <td colsapn="2"><font size="3">'+selectedBtn.closest('div').children('input[name="member"]').attr('value')+'</font></td>\
+                <td><font size="3" class="veralign2">규모</font></td>\
+                <td colsapn="2" class="veralign2"><font size="3">'+selectedBtn.closest('div').children('input[name="member"]').attr('value')+'</font></td>\
             </tr>\
             <tr>\
                 <td><img src="img/icon_info7_address.png" class="imgsize img-responsive"></td>\
-                <td><font size="3">주소</font></td>\
-                <td colsapn="2"><font size="3">'+selectedBtn.closest('div').children('input[name="address"]').attr('value')+'</font></td>\
+                <td><font size="3" class="veralign2">주소</font></td>\
+                <td colsapn="2" class="veralign2"><font size="3">'+selectedBtn.closest('div').children('input[name="address"]').attr('value')+'</font></td>\
             </tr>\
         </table>\
     ')
