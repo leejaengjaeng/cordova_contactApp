@@ -101,7 +101,7 @@ var smsnum;
 var cellphone;
 //alert(localStorage.length)
 function initial() {
-    localStorage.clear();
+    
 
     if (localStorage.length != 0) {
         var cellphone = localStorage.getItem('cellphone');
@@ -215,10 +215,10 @@ function retrysms(){
         url:'http://contact.attocube.co.kr/api/retrysms',
         data:{'cellphone':cellphone1,'csrfmiddlewaretoken':'{{ csrf_token }}',},
         success: function (data) {
-            alert(data.sms);
+
         },
         error:function(){
-            alert('error');
+
         }
     })
 }
