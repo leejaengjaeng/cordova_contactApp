@@ -61,6 +61,12 @@ body {
     width:30px;
     position: relative;
 }
+.backimg2{
+    width:30px;
+    position: absolute;
+    left:15px;
+    top:50px;
+}
 .searchinput{
     height:10px;
 }
@@ -91,4 +97,8 @@ body {
 }
 .vertical_center{
     vertical-align: middle;
+}
+.imgsize{
+    width:30px;
+
 }

@@ -67,7 +67,8 @@ function SearchLocation(doname,siname){
             currentIndex =0;
             moreFlag = MakeList(directors);
             console.log(currentIndex);
-            $('#more').toggle(moreFlag);
+
+            $('#more').hide();
         },
         error: function()
         {
@@ -121,20 +122,53 @@ function showDetail(selectedBtn)
 {
     $('#listView').hide();
     $('#detailView').show();
-    $('.detailPage').empty();
+    $('.detailPages').empty();
     
     $('.detailPages').append('\
-        <img class="img-rounded img-responsive" src="'+selectedBtn.parent('div').parent('div').children('.userimgDiv').children('img').attr('src')+'">\
-        <h1>'+selectedBtn.closest('div').children('input[name="member"]').attr('value')+'</h1>\
-        <h1>'+selectedBtn.closest('div').children('input[name="cellphone"]').attr('value')+'</h1>\
-        <h1>'+selectedBtn.closest('div').children('input[name="fax"]').attr('value')+'</h1>\
-        <h1>'+selectedBtn.closest('div').children('input[name="name"]').attr('value')+'</h1>\
-        <h1>'+selectedBtn.closest('div').children('input[name="do"]').attr('value')+'</h1>\
-        <h1>'+selectedBtn.closest('div').children('input[name="address"]').attr('value')+'</h1>\
-        <h1>'+selectedBtn.closest('div').children('input[name="si"]').attr('value')+'</h1>\
-        <h1>'+selectedBtn.closest('div').children('input[name="company"]').attr('value')+'</h1>\
-        <h1>'+selectedBtn.closest('div').children('input[name="email"]').attr('value')+'</h1>\
-        <h1>'+selectedBtn.closest('div').children('input[name="phone"]').attr('value')+'</h1>\
+        <table class="table">\
+            <tr>\
+                <td colspan="2" rowspan="2" ><img class="img-rounded img-responsive" src="'+selectedBtn.parent('div').parent('div').children('.userimgDiv').children('img').attr('src')+'"></td>\
+                <td colspan="2"><font size="3">'+selectedBtn.closest('div').children('input[name="name"]').attr('value')+'</font></td>\
+            </tr>\
+            <tr>\
+                <td><font size="3">'+selectedBtn.closest('div').children('input[name="company"]').attr('value')+'</font></td>\
+            </tr>\
+            <tr>\
+                <td><a href="tel:'+selectedBtn.closest('div').children('input[name="cellphone"]').attr('value')+'"><img src="img/icon_info1_mobile.png" class="imgsize img-responsive"></a></td>\
+                <td><font size="3">핸드폰</font></td>\
+               <td><font size="3">'+selectedBtn.closest('div').children('input[name="cellphone"]').attr('value')+'</font></td>\
+            </tr>\
+            <tr>\
+                <td><a href="mailto:'+selectedBtn.closest('div').children('input[name="email"]').attr('value')+'"><img src="img/icon_info2_email.png" class="imgsize img-responsive"></a></td>\
+                <td><font size="3">이메일</font></td>\
+                <td><font size="3">'+selectedBtn.closest('div').children('input[name="email"]').attr('value')+'</font></td>\
+            </tr>\
+            <tr>\
+                <td><img src="img/icon_info3_workin.png" class="imgsize img-responsive"></td>\
+                <td><font size="3">소속</font></td>\
+                <td><font size="3">'+selectedBtn.closest('div').children('input[name="company"]').attr('value')+'</font></td>\
+            </tr>\
+            <tr>\
+                <td><a href="tel:'+selectedBtn.closest('div').children('input[name="phone"]').attr('value')+'"><img src="img/icon_info4_tel.png" class="imgsize img-responsive"></a></td>\
+                <td><font size="3">전화번호</font></td>\
+                <td colsapn="2"><font size="3">'+selectedBtn.closest('div').children('input[name="phone"]').attr('value')+'</font></td>\
+            </tr>\
+            <tr>\
+                <td><img src="img/icon_info5_fax.png" class="imgsize img-responsive"></td>\
+                <td><font size="3">팩스</font></td>\
+                <td colsapn="2"><font size="3">'+selectedBtn.closest('div').children('input[name="fax"]').attr('value')+'</font></td>\
+            </tr>\
+            <tr>\
+                <td><img src="img/icon_info6_num.png" class="imgsize img-responsive"></td>\
+                <td><font size="3">규모</font></td>\
+                <td colsapn="2"><font size="3">'+selectedBtn.closest('div').children('input[name="member"]').attr('value')+'</font></td>\
+            </tr>\
+            <tr>\
+                <td><img src="img/icon_info7_address.png" class="imgsize img-responsive"></td>\
+                <td><font size="3">주소</font></td>\
+                <td colsapn="2"><font size="3">'+selectedBtn.closest('div').children('input[name="address"]').attr('value')+'</font></td>\
+            </tr>\
+        </table>\
     ')
     $('#detailHeaderTxt').text(selectedBtn.closest('div').children('input[name="name"]').attr('value')+"님의 상세정보");
     $('#detailHeaderTxt').css('font-size','8vw')
@@ -157,8 +191,9 @@ function changeview(localname){
 }
 
 function calllocalsearch() {
+
     document.getElementById("localsearchdiv").style.display="block";
-    document.getElementById("defaultdiv").style.display="none";
+    document.getElementById("topdiv").style.display="none";
     document.getElementById("mainname").innerHTML="<b class=\"maintext\">지역검색</b>"
     document.getElementById("back").style.display="block";
 }
@@ -168,14 +203,14 @@ function selectlocal(localname){
         var siname=localname;
     SearchLocation(doname,siname);
     document.getElementById("localsearchdiv").style.display="none";
-    document.getElementById("defaultdiv").style.display="block";
+    document.getElementById("topdiv").style.display="block";
     document.getElementById("mainname").innerHTML="<b class=\"maintext\">지역검색-"+siname+"</b>"
 }
 function ClickBack2(){
     currentIndex =0;
     moreFlag = true;
     document.getElementById("localsearchdiv").style.display="none";
-    document.getElementById("defaultdiv").style.display="block";
+    document.getElementById("topdiv").style.display="block";
     document.getElementById("mainname").innerHTML="<b class=\"maintext\">주소록</b>"
     document.getElementById("back").style.display="none";
     initCall();
