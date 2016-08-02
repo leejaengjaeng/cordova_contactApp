@@ -36,11 +36,11 @@ function Search(){
     $.ajax({
         method:'GET',
         url:'http://contact.attocube.co.kr/api/search',
-        data: {'name' : document.getElementById('search').value, 'csrfmiddlewaretoken': "{{ csrf_token }}"},
+        data: {'index':currentIndex, 'name' : document.getElementById('search').value, 'csrfmiddlewaretoken': "{{ csrf_token }}"},
         success: function(directors)
         {
             $('#resultList').empty();
-            currentIndex =0;
+            currentIndex +=20;
             moreFlag = MakeList(directors);
             console.log(currentIndex);
             $('#more').toggle(moreFlag);
@@ -58,17 +58,17 @@ function SearchLocation(doname,siname){
         method:'GET',
         url:'http://contact.attocube.co.kr/api/searchlocation',
         data: {
+            'index':currentIndex,
             'do' : doname,
             'si' : siname,
             'csrfmiddlewaretoken': "{{ csrf_token }}" },
         success: function(directors)
         {
             $('#resultList').empty();
-            currentIndex =0;
+            currentIndex +=20;
             moreFlag = MakeList(directors);
             console.log(currentIndex);
-
-            $('#more').hide();
+            $('#more').toggle(moreFlag);
         },
         error: function()
         {
