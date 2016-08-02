@@ -149,6 +149,8 @@ function changenumber ( email ) {
 }
 
 function ClickSMS(){
+    document.getElementById("body1").style.display="none";
+    document.getElementById("body2").style.display="block";
     var cellphone1 = document.getElementById('num1').value+"-"+document.getElementById('num2').value+"-"+document.getElementById('num3').value;
     $.ajax({
         method: 'GET',
@@ -263,6 +265,6 @@ function ClickLogin(){
 }
 
 function ClickBack(){
-    // document.getElementById("body1").style.display="block";
-    // document.getElementById("body2").style.visibility="hidden";
+    document.getElementById("body1").style.display="block";
+    document.getElementById("body2").style.dispaly="none";
 }
