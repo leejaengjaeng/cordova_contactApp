@@ -3,7 +3,6 @@
  */
 var currentIndex =0;
 var moreFlag = true;
-
 function initCall()
 {
     console.log(moreFlag);
@@ -97,7 +96,7 @@ function MakeList(directors){
                     </ul>\
                 </div>\
                 <div class="col-xs-3">\
-                    <button onclick="showDetail($(this))">\
+                    <button class="btn btn-default" onclick="showDetail($(this))">\
                             보기\
                     </button>\
                     <input type="hidden" name="member" value='+directors[director].member+' >\
@@ -214,4 +213,5 @@ function ClickBack2(){
     document.getElementById("mainname").innerHTML="<b class=\"maintext\">주소록</b>"
     document.getElementById("back").style.display="none";
     initCall();
+
 }

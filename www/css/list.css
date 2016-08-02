@@ -66,6 +66,7 @@ body {
     position: absolute;
     left:15px;
     top:50px;
+    display: none;
 }
 .searchinput{
     height:10px;
