@@ -57,6 +57,10 @@ body {
     position: relative;
     top:12px;
 }
+.backimg{
+    width:30px;
+    position: relative;
+}
 .searchinput{
     height:10px;
 }

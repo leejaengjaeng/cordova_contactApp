@@ -16,44 +16,84 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/list.js"></script>
         <title>TITLE : 유치원 연합회 주소록</title>
+        
+        <script type="text/javascript">
+            $(document).ready(function()
+            {
+                $('#detailView').hide();
+            })
+        </script>
     </head>
     <body onload="initCall()">
     <!--<body>-->
-        <div class="header container-fluid row">
-            <div class="col-xs-12">
+        <div id="listView">
+            <div class="header container-fluid row">
+                <div class="col-xs-12">
 
-                    <img src="img/logo_small.png" class="logoimg">
+                        <img src="img/logo_small.png" class="logoimg">
 
-                    <b class="maintext">주소록</b>
+                        <b class="maintext">주소록</b>
+
+                </div>
 
             </div>
+            <div class="search-page container-fluid">
+                <!-- 검색 폼-->
+                <div class="modal-header row">
+                    <div class="col-xs-9">
+                        <label><input class="searchinput" placeholder="이름을 검색해 주세요" data-type="search" name="search" id="search"></label>
+                    </div>
+                    <div class="col-xs-3">
+                        <img class = "searchimg"src="img/btn_search.png" onclick="Search()">
+                    </div>
+                </div>
+                <div class="search-filter modal-header container-fluid row">
+                    <div class="search-1 col-xs-3">
+                        검색 필터
+                    </div>
+                    <div class="col-xs-3">
+                        <img src="img/btn_searcharea.png" class="img-responsive" alt="Responsive image">
+                    </div>
+                </div>
+                    <!-- 결과 리스트 -->
+                <div id="resultList">
 
+                </div>
+                <div id="more" class="container-fluid" onclick="initCall()">
+                    <img src="img/btn_more.png" class="img-responsive" alt="Responsive image">
+                </div>
+            </div>
         </div>
-        <div class="search-page container-fluid">
-            <!-- 검색 폼-->
-            <div class="modal-header row">
-                <div class="col-xs-9">
-                    <label><input class="searchinput" placeholder="이름을 검색해 주세요" data-type="search" name="search" id="search"></label>
+    <!-- 디테일 페이지 -->
+        <div id="detailView">
+            <div class="header container-fluid row">
+                <div class="col-xs-12">
+                    <img src="img/btn_back.png" class="backimg" onclick="backToList()">         
+                    <b id="detailHeaderTxt" class="maintext">누군가의 상세정보</b>
                 </div>
-                <div class="col-xs-3">
-                    <img class = "searchimg"src="img/btn_search.png" onclick="Search()">
-                </div>
-            </div>
-            <div class="search-filter modal-header container-fluid row">
-                <div class="search-1 col-xs-3">
-                    검색 필터
-                </div>
-                <div class="col-xs-3">
-                    <img src="img/btn_searcharea.png" class="img-responsive" alt="Responsive image">
-                </div>
-            </div>
-                <!-- 결과 리스트 -->
-            <div id="resultList">
 
             </div>
-            <div id="more" class="container-fluid" onclick="initCall()">
-                <img src="img/btn_more.png" class="img-responsive" alt="Responsive image">
+            <div class="detailPages container-fluid">
+                <table style="background-color:red">
+                    <tr>
+                        <th colspan="2">
+                            <td rowspan="2">
+                                <img src="img/btn_back.png" class="backimg" onclick="backToList()">         
+                            </td>
+                        </th>
+                        <th colspan="2">
+                            <td> 문성혁 </td>
+                            <td> [경기/성남] 주도그 어린이집 </td>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td><img src="img/btn_more.png" class="backimg" onclick="backToList()"></td>         
+                        <td> 핸드폰 </td>
+                        <td> 010-3938-3920</td>
+                        <td><img src="img/btn_more.png" class="backimg" onclick="backToList()"></td>         
+                    </tr>
+                </table>
             </div>
-        </div>    
+        <div>
     </body>
 </html>
